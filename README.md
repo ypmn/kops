@@ -1,4 +1,4 @@
-Install kubectl
+# Install kubectl
 
 apt-get update && apt-get install vim curl wget -y
 
