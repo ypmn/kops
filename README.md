@@ -43,17 +43,17 @@ Ex : abc.com
 
 Ex : abc.com  Below are aws Route53 NS records
 
-(ns-751.awsdns-29.net)
+	(ns-751.awsdns-29.net)
 
- (ns-23.awsdns-02.com) 
+	(ns-23.awsdns-02.com) 
+
+	( ns-1202.awsdns-22.org)
+
+	( ns-1931.awsdns-49.co.uk)
  
-( ns-1202.awsdns-22.org)
- 
-( ns-1931.awsdns-49.co.uk)
- 
-    Add To
+        Add To
      
-     Go Daddy (domain provider ) DNS NameServer 
+        Go Daddy (domain provider ) DNS NameServer 
 
 # create a s3 bucket in a region where you have to create the cluser
 
