@@ -43,6 +43,8 @@ Ex : abc.com
 
 Ex : abc.com  Below are aws Route53 NS records
 
+        From AWS Route53 NS Records 
+	
 	(ns-751.awsdns-29.net)
 
 	(ns-23.awsdns-02.com) 
