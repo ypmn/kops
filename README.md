@@ -121,7 +121,7 @@ ssh-keygen
 
 Note : Now It will list of the commands carefully run  to add a pubclic key to master node for ssh to master execute that command
 
-#Check the list of the nodes
+# Check the list of the nodes
 
 kubectl get nodes
 
