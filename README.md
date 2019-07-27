@@ -18,7 +18,9 @@ sudo mv ./kops /usr/local/bin/
 # Install aws cli
 
 sudo apt install python-pip
+
 pip install awscli
+
 export PATH=$PATH:~/.local/bin
 
 # Create a iam user with admin access
