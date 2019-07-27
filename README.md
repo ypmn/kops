@@ -39,6 +39,8 @@ Ex : godaddy.com ( domain provider )
 
 # create a s3 bucket in a region where you have to create the cluser
 
+Goto aws console create s3 bucket or use aws cli create the s3 bucket
+
 Ex : bucket name : mybucket.abc.com
 
 
@@ -61,7 +63,7 @@ kops create cluster \
 kops validate cluster mycluster.abc.com --state "s3://mybucket.abc.com"	   
 
 
-Instead od using --state every time  set env for that one
+Instead of using --state every time  set env for that one
 
 
 
@@ -80,7 +82,7 @@ kops validate cluster mycluster.abc.com --yes
 kops update cluster mycluster.abc.com 
 
 
-#Update the cluser
+# Update the cluser
 
 kops update cluster mycluster.abc.com  --yes
 
@@ -97,6 +99,8 @@ kubectl get nodes
 kops delete cluster mycluster.abc.com --state "s3://mybucket.abc.com"
 
 # Delete the s3 bucket
+
+Goto s3 service in aws console delete the bucket
 
 
 
