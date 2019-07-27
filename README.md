@@ -25,23 +25,35 @@ pip install awscli
 
 export PATH=$PATH:~/.local/bin
 
-# Create a iam user with admin access
+# Create a iam user with admin access with programatic access 
 
-Create access key for that user
+Create access key for that user and download the csv file 
 
 
-# Configure aws credentials
+# Configure aws credentials with accessID and secretkey (from csv file) and execute below command
 
 aws configure
 
 
-# Create a hostzone in route53 with your domain
+# Create a hostzone in route53 with your domain in publichosted zone
 
 Ex : abc.com
 
-Add dns servers to domain provider
+# And add NS records from aws Route53 to Nameservers in Godaddy ( Domain provider ) DNS.
 
-Ex : godaddy.com ( domain provider )
+Ex : abc.com  Below are aws Route53 NS records
+
+(ns-751.awsdns-29.net)
+
+ (ns-23.awsdns-02.com) 
+ 
+( ns-1202.awsdns-22.org)
+ 
+( ns-1931.awsdns-49.co.uk)
+ 
+    Add To
+     
+     Go Daddy (domain provider ) DNS NameServer 
 
 # create a s3 bucket in a region where you have to create the cluser
 
@@ -66,10 +78,14 @@ kops create cluster \
 # Check the cluster status
 
 
-kops validate cluster mycluster.abc.com --state "s3://mybucket.abc.com"	   
+kops validate cluster mycluster.abc.com --state "s3://mybucket.abc.com" 	
+
+or 
+
+kops validate cluster mycluster.abc.com --state "s3://mybucket.abc.com" --yes
 
 
-Instead of using --state every time  set env for that one
+Instead of using --state every time  set env for that below the mentioned process
 
 
 
@@ -82,18 +98,28 @@ Now run kops commands without specifing the bucket name
 kops validate cluster mycluster.abc.com --yes
 
 
-# Update the cluser dry run
+# Update the cluster dry run
 
 
 kops update cluster mycluster.abc.com 
 
 
-# Update the cluser
+# Update the cluster
 
 kops update cluster mycluster.abc.com  --yes
 
+# And wait for atleast 20 mins to get up the k8s cluster and below the command to know the status of installation
 
-Note : It will give command to add a pubclic key to master node for ssh to master execute that command
+kops validate cluster mycluster.abc.com --yes
+
+# Now here we need to generate ssh key and below are the process
+
+ssh-keygen
+
+
+
+
+Note : Now It will list of the commands carefully run  to add a pubclic key to master node for ssh to master execute that command
 
 #Check the list of the nodes
 
