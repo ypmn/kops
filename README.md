@@ -213,9 +213,14 @@ ssh admin@api.mycluster.abc.com
 
 kops delete cluster mycluster.abc.com --state "s3://mybucket.abc.com" --yes
 
-# Delete the s3 bucket
 
-Goto s3 service in aws console delete the bucket
+# Empty the s3 bucket or delete the all objects in bucket command
+
+aws s3 rm s3://mybucket.abc.com --recursive
+
+# Delete the s3 bucket forcely
+
+aws s3 rb s3://mybucket.abc.com --force
 
 
 
