@@ -199,11 +199,19 @@ kubectl get nodes
 	ip-172-20-47-238.us-east-2.compute.internal   Ready    node     13m   v1.12.8
 	ip-172-20-61-226.us-east-2.compute.internal   Ready    node     12m   v1.12.8
 
+# Check the Route53, Two domains will be added 
 
+Ex : api.mycluster.abc.com
+
+     api.internal.mycluster.abc.com
+     
+# SSH to the master node using the public domain name
+
+ssh admin@api.mycluster.abc.com
 
 # Delete the cluster
 
-kops delete cluster mycluster.abc.com --state "s3://mybucket.abc.com"
+kops delete cluster mycluster.abc.com --state "s3://mybucket.abc.com" --yes
 
 # Delete the s3 bucket
 
