@@ -191,6 +191,15 @@ kops validate cluster mycluster.abc.com
 
 kubectl get nodes
 
+	NAME                                          STATUS   ROLES    AGE   VERSION
+	ip-172-20-33-98.us-east-2.compute.internal    Ready    master   14m   v1.12.8
+	ip-172-20-40-104.us-east-2.compute.internal   Ready    master   13m   v1.12.8
+	ip-172-20-40-56.us-east-2.compute.internal    Ready    master   14m   v1.12.8
+	ip-172-20-45-130.us-east-2.compute.internal   Ready    node     12m   v1.12.8
+	ip-172-20-47-238.us-east-2.compute.internal   Ready    node     13m   v1.12.8
+	ip-172-20-61-226.us-east-2.compute.internal   Ready    node     12m   v1.12.8
+
+
 
 # Delete the cluster
 
