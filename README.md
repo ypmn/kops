@@ -70,6 +70,8 @@ Goto aws console create s3 bucket or use aws cli create the s3 bucket
 
 Ex : bucket name : mybucket.abc.com
 
+aws s3 mb s3://mybucket.abc.com --region us-east-2
+
 
 # Create the cluster with two masters and three nodes
 
