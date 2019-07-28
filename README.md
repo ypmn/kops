@@ -73,18 +73,29 @@ Ex : bucket name : mybucket.abc.com
 aws s3 mb s3://mybucket.abc.com --region us-east-2
 
 
-# Create the cluster with two masters and three nodes
+# Create the cluster with 3 masters and three nodes
 
+# Note : Master node count should be odd number
 
 kops create cluster \
        --state "s3://mybucket.abc.com" \
        --zones "us-east-2c"  \
-       --master-count 2 \
+       --master-count 3 \
        --master-size=t2.medium \
        --node-count 3 \
        --node-size=t2.medium \
        --name mycluster.abc.com \
        --yes
+       
+     # above " kops create cluster command expected output mentioned below "
+     I0728 05:49:50.789769   18430 create_cluster.go:519] Inferred --cloud=aws from zone "us-east-2c"
+     W0728 05:49:50.789974   18430 create_cluster.go:720] Running with masters in the same AZs; redundancy will be reduced
+     I0728 05:49:50.832235   18430 subnets.go:184] Assigned CIDR 172.20.32.0/19 to subnet us-east-2c
+
+     SSH public key must be specified when running with AWS
+     (create with `kops create secret --name mycluster.abc.com sshpublickey admin -i ~/.ssh/id_rsa.pub`)
+    
+
 
 # Check the cluster status
 
