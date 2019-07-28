@@ -94,8 +94,15 @@ kops create cluster \
 
      SSH public key must be specified when running with AWS
      (create with `kops create secret --name mycluster.abc.com sshpublickey admin -i ~/.ssh/id_rsa.pub`)
-    
+     
+     
+# Follow the below commands to generate the public key and create a secret by using below command for connecting the cluster
 
+ssh-keygen
+
+# Note : Here give your cluster name and s3 bucket name 
+
+kops create secret --name mycluster.abc.com sshpublickey admin -i ~/.ssh/id_rsa.pub --state "s3://mybucket.abc.com"
 
 # Check the cluster status
 
@@ -133,13 +140,6 @@ kops update cluster mycluster.abc.com  --yes
 # And wait for atleast 20 mins to get up the k8s cluster and below the command to know the status of installation
 
 kops validate cluster mycluster.abc.com --yes
-
-# Now here we need to generate ssh key and below are the process
-
-ssh-keygen
-
-
-
 
 Note : Now It will list of the commands carefully run  to add a pubclic key to master node for ssh to master execute that command
 
