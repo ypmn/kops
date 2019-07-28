@@ -1,3 +1,27 @@
+# Install the kubectl kops and aws cli 
+
+bash <(curl -Ls
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Below are the manual process for installating the kops in aws 
+
 # Install kubectl
 
 apt-get update && apt-get install vim curl wget -y
