@@ -104,28 +104,12 @@ ssh-keygen
 
 kops create secret --name mycluster.abc.com sshpublickey admin -i ~/.ssh/id_rsa.pub --state "s3://mybucket.abc.com"
 
-# Check the cluster status
-
-
-kops validate cluster mycluster.abc.com --state "s3://mybucket.abc.com" 	
-
-or 
-
-kops validate cluster mycluster.abc.com --state "s3://mybucket.abc.com" --yes
-
-
-Instead of using --state every time  set env for that below the mentioned process
-
-
+# Change the s3 bucket name and Export the bucket name as ENV 
 
 export KOPS_STATE_STORE=s3://mybucket.abc.com
 
 
 Now run kops commands without specifing the bucket name
-
-
-kops validate cluster mycluster.abc.com --yes
-
 
 # Update the cluster dry run
 
@@ -133,15 +117,75 @@ kops validate cluster mycluster.abc.com --yes
 kops update cluster mycluster.abc.com 
 
 
-# Update the cluster
+# execute the below command for Update the cluster and expected output
 
 kops update cluster mycluster.abc.com  --yes
 
-# And wait for atleast 20 mins to get up the k8s cluster and below the command to know the status of installation
+    I0728 06:07:20.744071   18502 executor.go:103] Tasks: 0 done / 93 total; 47 can run
+    I0728 06:07:20.900948   18502 executor.go:103] Tasks: 47 done / 93 total; 24 can run
+    I0728 06:07:21.017732   18502 executor.go:103] Tasks: 71 done / 93 total; 18 can run
+    I0728 06:07:21.244639   18502 executor.go:103] Tasks: 89 done / 93 total; 4 can run
+    I0728 06:07:21.337591   18502 executor.go:103] Tasks: 93 done / 93 total; 0 can run
+    I0728 06:07:21.337763   18502 dns.go:153] Pre-creating DNS records
+    I0728 06:07:21.454645   18502 update_cluster.go:291] Exporting kubecfg for cluster
+    kops has set your kubectl context to mycluster.abc.com
+
+    Cluster changes have been applied to the cloud.
+
+
+    Changes may require instances to restart: kops rolling-update cluster
+   
+
+# Below the command to know the status of installation and expected output
 
 kops validate cluster mycluster.abc.com --yes
 
-Note : Now It will list of the commands carefully run  to add a pubclic key to master node for ssh to master execute that command
+	Validating cluster mycluster.abc.com
+
+	INSTANCE GROUPS
+	NAME                    ROLE    MACHINETYPE     MIN     MAX     SUBNETS
+	master-us-east-2c-1     Master  t2.medium       1       1       us-east-2c
+	master-us-east-2c-2     Master  t2.medium       1       1       us-east-2c
+	master-us-east-2c-3     Master  t2.medium       1       1       us-east-2c
+	nodes                   Node    t2.medium       3       3       us-east-2c
+
+	NODE STATUS
+	NAME    ROLE    READY
+
+	VALIDATION ERRORS
+	KIND    NAME            MESSAGE
+	dns     apiserver       Validation Failed
+
+	The dns-controller Kubernetes deployment has not updated the Kubernetes cluster's API DNS entry to the correct IP address.  The         API DNS IP address is the placeholder address that kops creates: 203.0.113.123.  Please wait about 5-10 minutes for a master to         start, dns-controller to launch, and DNS to propagate.  The protokube container and dns-controller deployment logs may contain           more diagnostic information.  Etcd and the API DNS entries must be updated for a kops Kubernetes cluster to start.
+
+	Validation Failed
+        Note : Now It will list of the commands carefully run  to add a pubclic key to master node for ssh to master execute thatcommand
+	
+# Execute the below command with your cluster name after 10 mins to makesure for cluster ready and expected output 
+
+kops validate cluster mycluster.abc.com
+
+	Validating cluster mycluster.abc.com
+
+	INSTANCE GROUPS
+	NAME                    ROLE    MACHINETYPE     MIN     MAX     SUBNETS
+	master-us-east-2c-1     Master  t2.medium       1       1       us-east-2c
+	master-us-east-2c-2     Master  t2.medium       1       1       us-east-2c
+	master-us-east-2c-3     Master  t2.medium       1       1       us-east-2c
+	nodes                   Node    t2.medium       3       3       us-east-2c
+
+	NODE STATUS
+	NAME                                            ROLE    READY
+	ip-172-20-33-98.us-east-2.compute.internal      master  True
+	ip-172-20-40-104.us-east-2.compute.internal     master  True
+	ip-172-20-40-56.us-east-2.compute.internal      master  True
+	ip-172-20-45-130.us-east-2.compute.internal     node    True
+	ip-172-20-47-238.us-east-2.compute.internal     node    True
+	ip-172-20-61-226.us-east-2.compute.internal     node    True
+
+	Your cluster mycluster.abc.com is ready
+
+
 
 # Check the list of the nodes
 
