@@ -1,23 +1,6 @@
-# Install the kubectl kops and aws cli 
+# Installation scripts for the kubectl kops and aws cli 
 
-bash <(curl -Ls
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+bash <(curl -Ls https://raw.githubusercontent.com/ypmn/kops/master/kubectl-kops-awscli-install.sh)
 
 
 # Below are the manual process for installating the kops in aws 
